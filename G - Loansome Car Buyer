@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+	
+	int DuracionPrestamo;
+	double PagoInicial;
+	double MontoPrestamo;
+	int NumRegistros;
+	bool ban = false;
+	
+	while(ban != true){
+		cin>>DuracionPrestamo>>PagoInicial>>MontoPrestamo>>NumRegistros;
+		
+		if(DuracionPrestamo >= 0){                   //El programa se ejecutara hasta que encuentre un numero negativo
+			//int NumMes; double porcentaje;
+			cout<<endl<<endl<<endl;
+
+			double registros[100][2];
+			double MontoPorPagar; double ValorCarro;
+			
+			MontoPorPagar = MontoPrestamo;
+			ValorCarro = MontoPrestamo + PagoInicial;
+			
+			for(int i=0;i<NumRegistros;i++){
+				cin>>registros[i][0]>>registros[i][1];
+			}
+
+			bool ban2 = false;
+			int i=1,j=1; double porcentajeActual;
+			porcentajeActual = registros[0][1];
+
+			ValorCarro = ValorCarro - ValorCarro*(porcentajeActual);
+
+			cout<<"Mont Pag: "<<MontoPorPagar<<endl;
+			cout<<"Val carro: "<<ValorCarro<<endl;
+			
+			if (MontoPorPagar < ValorCarro)
+			{
+				cout<<"1 month";
+			}
+
+			else{
+					while(ban2 != true){
+								
+						if(i == registros[j][0]){
+									porcentajeActual = registros[j][1];	
+									j++;
+						}
+						cout<<"porcentaje actual "<<i<<" :"<<porcentajeActual<<endl;
+						MontoPorPagar = MontoPorPagar - PagoInicial;
+						ValorCarro = ValorCarro - (ValorCarro * porcentajeActual);
+						cout<<"Mont Pag: "<<MontoPorPagar<<endl;
+						cout<<"Val carro: "<<ValorCarro<<endl;
+			
+						if(MontoPorPagar < ValorCarro){
+							cout<<i<<" Months";
+							ban2 = true;
+						}		
+								i++;	
+							}
+			}
+		}else{
+		ban = true;
+	}		
+	}
+  return 0;
+}
