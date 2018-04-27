@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+	
+	double H,U,D,F;
+	bool ban=true;
+	
+	while(ban == true){
+	
+		cin>>H>>U>>D>>F; //1 < < H = Altura,U = Distancia x dia,D = Distacia x noche, F = Fatica <= 100
+
+		if (H == 0){
+		ban = false;break;}
+
+		double porcentaje = U * (F/100);
+		double posicionActual=0;
+
+		double i=1;
+		bool ban2 = true;
+		double Distaciaxdia  = U;
+
+		while(ban2 == true){
+
+				posicionActual = posicionActual + Distaciaxdia;
+				if (posicionActual > H)
+				{
+					cout<<"success on day "<<i<<"\n";
+					ban2 = false;
+				}
+				else{
+					posicionActual = posicionActual - D;
+					if (posicionActual < 0)
+						{
+							cout<<"failure on day "<<i<<"\n";
+							ban2 = false;
+						}	
+				}
+				Distaciaxdia = Distaciaxdia - porcentaje ;
+				
+				if (Distaciaxdia < 0)
+					Distaciaxdia = 0;
+				//cout<<"Dia: "<<i<<" PA: "<<posicionActual<<" DXD: "<<Distaciaxdia<<"\n";
+			i++;		
+		}
+
+	}
+
+	return 0;
+}
