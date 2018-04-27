@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+
+bool ordenar (double arreglo[], double tam)
+{
+   int i, j, temporal;
+   int ban=0;
+ 
+   for (i = tam - 1; i > 0; i--)
+      for (j = 0; j < i; j++)
+         if (arreglo[j] > arreglo[j + 1]) {
+            temporal = arreglo[j];
+            arreglo[j] = arreglo[j + 1];
+            arreglo[j + 1] = temporal;
+         }
+   for (int i = 0; i < tam-1; ++i)
+   {
+   		if (arreglo[0] == 1)
+   		{
+   			if (arreglo[i] == arreglo[i+1]-1)
+   			{
+   				ban = 1;	
+   			}
+   			else{
+   				ban = 0;
+   				break;}
+   		}
+   		else
+   			ban = 0;
+   }
+   if (ban == 1)
+   {
+   	return true;
+   }
+   else
+   	return false;
+}
+
+
+int main(){
+
+	double N;
+	while(cin>>N){
+	double numeros[3100];
+	double num[3100];
+
+	for (int i = 0; i < N; ++i)
+	{
+		cin>>numeros[i];
+	}
+
+	double numActual;
+	//double numAnterior;
+	bool ban= false;
+
+	if (N > 2)
+	{
+				for (int i = 0; i < N-1; ++i)
+				{
+					numActual = numeros[i]-numeros[i+1];
+					if (numActual < 0)
+						numActual = numActual * -1;
+					num[i]= numActual;
+				}
+				ban= ordenar(num, N-1);
+	}
+
+	if (N == 2)
+	{
+		double  k;
+		k = numeros[0]-numeros[1];
+		if (k<0)
+			k= k*-1;
+		if (k == 1)
+		{
+			ban = true;
+		}
+		else
+			ban = false;
+	}
+
+
+	if (ban == true || N == 1)
+	{
+		cout<<"Jolly"<<"\n";
+	}
+	else
+		cout<<"Not jolly"<<"\n";
+}
+	return 0;
+}
