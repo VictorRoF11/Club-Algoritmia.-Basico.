@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+
+	int T; // T<= 50 Casos de prueba
+
+	cin>>T;
+	for (int i = 1; i <= T; ++i)
+	{
+		
+		int N; //Numero de estudiantes 1<N<100
+		int velMenor=0;
+		cin>>N;
+		int velocidades[N+1];
+		for (int i = 0; i < N; ++i)
+		{
+			cin>>velocidades[i];
+			if (velMenor <= velocidades[i])
+			{
+				velMenor = velocidades[i];
+			}
+		}
+
+		cout<<"Case "<<i<<": "<<velMenor<<"\n";
+	}
+	return 0;
+}
